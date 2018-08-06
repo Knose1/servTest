@@ -17,7 +17,7 @@ app.get('/user/:id', function(request, response){
 
 
 app.get('/view/*', function(request,response) {
-  response.render(`pages/${request.path}`);
+  response.render(`pages/${request.path.slice("/view/".length)}`);
 });
 
 app.get('/files/*', function(request,response,next) {
