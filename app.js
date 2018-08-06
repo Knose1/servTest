@@ -1,5 +1,11 @@
 const express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+var multer = require('multer'); // v1.0.5
+var upload = multer(); // for parsing multipart/form-data
+
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 app.set('port', (process.env.PORT || 1000));
 
@@ -10,14 +16,19 @@ app.set('view engine','ejs');
   response.render(`pages/login`);
 });*/
 
-app.get(`/admin/*`,function(request,response,next) {
+app.all(`/admin/*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
     app.locals.adminIp = request.ip;
     console.log("▬▬",app.locals.adminIp,"▬▬");
     response.send("Successfuly connected");
     
   } else if (app.locals.adminIp == request.ip){
-    response.render(`pages/${request.path.slice("pages/admin/".length)}`);
+    response.render(`pages/${request.path.slice("pages/admin/".length)}`, { ip: app.locals.adminIp, eval: request.body}, function(err, html) {
+      //request.body
+    });
+    
+    
+    
   } else {
     response.status(403).send({error: "Accès refusé"});
   }
