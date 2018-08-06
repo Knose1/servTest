@@ -15,7 +15,7 @@ app.get(`/admin/eval`,function(request,response) {
 });
 
 app.get(`/admin/*`,function(request,response,next) {
-  if (request.query.admin == String(process.env.ADMINPASS).encodeURI() && request.query.mail == String(process.env.ADMINMAIL).encodeURI()) {
+  if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
       app.locals.adminIp = request.ip
   } else {
       response.sendStatus(403);
