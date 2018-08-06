@@ -24,7 +24,7 @@ app.all(`/admin/*`,function(request,response,next) {
     
   } else if (app.locals.adminIp == request.ip){
     response.render(`pages/${request.path.slice("pages/admin/".length)}`, { ip: app.locals.adminIp, eval: request.body}, function(err, html) {
-      //request.body
+      request.body
     });
     
     
