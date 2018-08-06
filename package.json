@@ -4,8 +4,7 @@
   "description": "Test a serv",
   "main": "index.js",
   "scripts": {
-     "start":"node index.js",
-     "test":""
+     "start":"node index.js"
   },
   "author": "knose1",
   "license": "MIT"
