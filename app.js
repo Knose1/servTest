@@ -7,12 +7,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine','ejs');
 
 app.get('/', function(request,response) {
-  response.send('pages');
-});
-
-app.all('/secret', function (request,response, next) {
-  response.send('Accessing the secret section ...');
-  next(); // pass control to the next handler
+  response.render('pages/index');
 });
 
 app.get(/./, function(request,response) {
