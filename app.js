@@ -18,11 +18,11 @@ app.set('view engine','ejs');
 
 app.all(`/admin/*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
-    app.locals.adminIp = request.ip;
+    app.locals.adminRandCode = ;
     console.log("▬▬",app.locals.adminIp,"▬▬");
     response.send("Successfuly connected");
     
-  } else if (app.locals.adminIp == request.ip){
+  } else if (app.locals.adminRandCode == request.ip){
     response.render(`pages/${request.path.slice("pages/admin/".length)}`, { ip: app.locals.adminIp, eval: request.body}, function(err, html) {
       request.body
     });
