@@ -9,7 +9,7 @@
   "dependencies": {
     "ejs":"",
     "express":""
-  }
+  },
   "author": "knose1",
   "license": "MIT"
 }
