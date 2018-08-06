@@ -6,14 +6,14 @@ app.set('port', (process.env.PORT || 0000));
 app.set('views', __dirname + '/views');
 app.set('view engine','ejs');
 
-//404 Handeler
-app.all("*", function(request,response) {
-  console.log(request.originalUrl);
-  console.log(request.baseUrl);
-  console.log(request.path);
-  console.log("▬▬▬");
-  response.status(404).send('Sorry, we cannot find that!');
+//Test
+app.get('/user/:id', function(request, response){
+  response.send('user ' + request.params.id);
 });
+// \Test
+
+
+
 
 
 app.get('/view/*', function(request,response) {
@@ -21,8 +21,21 @@ app.get('/view/*', function(request,response) {
 });
 
 app.get('/files/*', function(request,response,next) {
+  
+  const orderPart = request.path.replace(/\//g,"/▲").replace(/:/g,":▼").split(/[/:]/g).map(m => {
+
+    if (m.indexOf("▲") == 0)
+      return {content: m.replace(/▲/g,""), type:"/"};
+    else if (m.indexOf("▼") == 0)
+      return {content: m.replace(/▼/g,""), type:":"};
+
+  }).filter(f => f != undefined) //return an array
+  
+  let filtered = orderPart.filter(f => f.type == "/")
+  let popped = filtered.pop()
+  
   var options = {
-    root: __dirname + request.path,
+    root: __dirname + filtered.map(m => m.type + m.content).join(""),
     dotfiles: 'deny',
     headers: {
         'x-timestamp': Date.now(),
@@ -30,7 +43,7 @@ app.get('/files/*', function(request,response,next) {
     }
   };
 
-  var fileName = request.path;
+  var fileName = popped.content;
   response.sendFile(fileName, options, function (err) {
     if (err) {
       next(err);
@@ -40,13 +53,11 @@ app.get('/files/*', function(request,response,next) {
   });
 });
 
-//Test
-app.get('/user/:id', function(request, response){
-  response.send('user ' + request.params.id);
+
+//404 Handeler
+app.all("*", function(request,response) {
+  response.status(404).send('Sorry, we cannot find that!');
 });
-// \Test
-
-
 
 app.listen(app.get('port'), function() {
   console.log(`App is running on port ${app.get('port')}`)
