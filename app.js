@@ -24,8 +24,8 @@ app.get(`/admin/*`,function(request,response,next) {
 });
 //404 Handeler
 app.all("*", function(request,response) {
-  //response.status(403).send({error: "Accès refusé"})
-  response.status(404).send('Sorry, we cannot find that!');
+  response.status(403).send({error: "Accès refusé"})
+  response.status(404).send({error: "404 not found", path: request.path});
 });
 
 app.listen(app.get('port'), function() {
