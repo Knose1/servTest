@@ -8,4 +8,4 @@ http.createServer(function (req, res) {
   console.log(req.url);
   res.write(req.url + "<br>");
   res.end(txt);
-}).listen(8080);
+})//.listen(8080);
