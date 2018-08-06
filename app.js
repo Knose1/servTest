@@ -10,10 +10,6 @@ app.set('view engine','ejs');
   response.render(`pages/login`);
 });*/
 
-app.get(`/admin/eval`,function(request,response) {
-  
-});
-
 app.get(`/admin/*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
     app.locals.adminIp = request.ip;
@@ -21,12 +17,11 @@ app.get(`/admin/*`,function(request,response,next) {
     response.send("Successfuly connected");
     
   } else if (app.locals.adminIp == request.ip){
-    
-    
+    response.render(`pages/${request.path.slice("pages/admin/".length)}`);
   } else {
     response.status(403).send({error: "Accès refusé"});
   }
-  next();
+  //next();
 });
 //404 Handeler
 app.all("*", function(request,response) {
