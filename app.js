@@ -22,7 +22,7 @@ app.get('/view/*', function(request,response) {
 
 app.get('/files/*', function(request,response,next) {
   
-  const orderPart = request.path.replace(/\//g,"/▲").replace(/:/g,":▼").split(/[/:]/g).map(m => {
+  const filePart = request.path.replace(/\//g,"/▲").replace(/:/g,":▼").split(/[/:]/g).map(m => {
 
     if (m.indexOf("▲") == 0)
       return {content: m.replace(/▲/g,""), type:"/"};
@@ -30,8 +30,11 @@ app.get('/files/*', function(request,response,next) {
       return {content: m.replace(/▼/g,""), type:":"};
 
   }).filter(f => f != undefined) //return an array
+  filePart.shift();
   
-  let filtered = orderPart.filter(f => f.type == "/")
+  console.log(filePart)
+  
+  let filtered = filePart.filter(f => f.type == "/")
   let popped = filtered.pop()
   
   var options = {
