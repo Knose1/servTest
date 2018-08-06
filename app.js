@@ -8,9 +8,9 @@ app.set('view engine','ejs');
 
 //404 Handeler
 app.all("*", function(request,response) {
-  console.log(req.originalUrl);
-  console.log(req.baseUrl);
-  console.log(req.path);
+  console.log(request.originalUrl);
+  console.log(request.baseUrl);
+  console.log(request.path);
   console.log("▬▬▬");
   response.status(404).send('Sorry, we cannot find that!');
 });
