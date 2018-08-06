@@ -10,14 +10,21 @@ app.set('view engine','ejs');
   response.render(`pages/login`);
 });*/
 
-app.use(function(req, res, next){
-  res.locals.user = "test";
-  res.locals.authenticated = true;
-  next();
+app.get(`/admin/eval`,function(request,response) {
+  
 });
 
+app.get(`/admin/*`,function(request,response,next) {
+  if (request.query.admin == process.env.ADMINPASS.encodeURI() && request.query.mail == process.env.ADMINMAIL.encodeURI()) {
+      app.locals.adminIp = request.ip
+  } else {
+      response.sendStatus(403);
+  }
+  next()
+});
 //404 Handeler
 app.all("*", function(request,response) {
+  //response.status(403).send({error: "Accès refusé"})
   response.status(404).send('Sorry, we cannot find that!');
 });
 
