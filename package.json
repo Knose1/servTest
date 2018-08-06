@@ -8,7 +8,9 @@
   },
   "dependencies": {
     "ejs":"",
-    "express":""
+    "express":"",
+    "multer":"",
+    "body-parser":""
   },
   "author": "knose1",
   "license": "MIT"
