@@ -11,8 +11,8 @@ app.set('view engine','ejs');
 });*/
 
 app.use(function(req, res, next){
-  res.locals.user = req.user;
-  res.locals.authenticated = !req.user.anonymous;
+  res.locals.user = "test";
+  res.locals.authenticated = true;
   next();
 });
 
