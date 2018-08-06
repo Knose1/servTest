@@ -5,6 +5,7 @@ http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/html'});
   var q = url.parse(req.url, true).query;
   var txt = q.year + " " + q.month;
-  console.log(req.url)
+  console.log(req.url);
+  res.write('Hello World!');
   res.end(txt);
 }).listen(8080);
