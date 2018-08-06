@@ -1,7 +1,7 @@
 const express = require('express');
 var app = express();
 
-app.set('port', (process.env.PORT || 0000));
+app.set('port', (process.env.PORT || 1000));
 
 app.set('views', __dirname + '/views');
 app.set('view engine','ejs');
