@@ -8,6 +8,10 @@ app.set('view engine','ejs');
 
 //404 Handeler
 app.all("*", function(request,response) {
+  console.log(req.originalUrl);
+  console.log(req.baseUrl);
+  console.log(req.path);
+  console.log("▬▬▬");
   response.status(404).send('Sorry, we cannot find that!');
 });
 
@@ -18,7 +22,7 @@ app.get('/view/*', function(request,response) {
 
 app.get('/files/*', function(request,response,next) {
   var options = {
-    root: __dirname /*+ '/public/'*/,
+    root: __dirname + request.path,
     dotfiles: 'deny',
     headers: {
         'x-timestamp': Date.now(),
