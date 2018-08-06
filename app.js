@@ -1,11 +1,15 @@
-var http = require('http');
-var url = require('url');
+const express = require('express');
+var app = express();
 
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  var q = url.parse(req.url, true).query;
-  var txt = q.year + " " + q.month;
-  console.log(req.url);
-  res.write(req.url + "<br>");
-  res.end(txt);
-})//.listen(8080);
+app.set('port', (process.env.PORT || 0000));
+
+app.set('views', __dirname + '/views');
+app.set('view engine','ejs');
+
+app.get('/', function(request,response) {
+  response.render('apps/index');
+});
+
+app.listen(app.get('port'), function() {
+  console.log(`App is running on port ${app.get('port')}`)
+});
