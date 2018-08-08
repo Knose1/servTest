@@ -22,7 +22,7 @@ app.set('view engine','ejs');
 app.all(`/admin/*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
     
-    let randNum = new TextEncoder().encode(String(Math.floor(Math.random()*10000000000000000)) + String(Math.floor(Math.random()*10000000000000000))).join("");
+    let randNum = String( Math.floor(Math.random()*10000000000000000) ) + String( Math.floor(Math.random()*10000000000000000) );
     app.locals.adminRandCode = randNum;
     response.cookie("adminRandCode",randNum);
     
