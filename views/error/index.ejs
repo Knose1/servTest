@@ -42,8 +42,15 @@
                 default:
             %>
         <% }} catch (e) { %>
-            <%= "Warning: `code` is not defined" %>
-        <% console.log(e) } %>
+            <%=
+            `<div class="content catch">
+                <div class="content_error catch">
+                    An error occured in the handeler
+                </div>
+                <error>${e}</error>
+            </div>`
+            %>
+        <% } %>
     </body>
 
 </html>
