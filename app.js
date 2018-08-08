@@ -24,7 +24,7 @@ app.get(`/css/*.css`,function(request,response,next) {
     root: __dirname,
   };
   var fileName = "/views" + request.path
-  respond.sendFile(fileName, options, function (err) {
+  response.sendFile(fileName, options, function (err) {
     if (err) {
       console.log(fileName)
       next(err);
