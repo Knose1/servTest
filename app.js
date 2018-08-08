@@ -36,7 +36,7 @@ app.all(`/admin/*`,function(request,response,next) {
     
     
   } else {
-    response.status(403).send({error: "Accès refusé", cookies:request.cookies});
+    response.status(403).send({error: "Accès refusé", cookies: request.cookies, cookies_string: String(request.cookies)});
   }
   //next();
 });
