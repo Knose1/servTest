@@ -29,12 +29,11 @@ app.all(`/admin/*`,function(request,response,next) {
     console.log("▬▬",app.locals.adminRandCode,"▬▬");
     response.send("Successfuly connected");
     
-  } else if (app.locals.adminRandCode && request.cookies) {
-    if (app.locals.adminRandCode == request.cookies.adminRandCode && request.cookies.adminRandCode != undefined) {
-      response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode/*, eval: request.body*/}/*, function(err, html) {
-        request.body
-      }*/);
-    }
+  } else if (app.locals.adminRandCode == request.cookies.adminRandCode && request.cookies.adminRandCode != undefined) {
+    
+    response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode/*, eval: request.body*/}/*, function(err, html) {
+      request.body
+    }*/);
     
     
     
