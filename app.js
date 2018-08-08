@@ -18,13 +18,16 @@ app.set('view engine','ejs');
 
 app.all(`/admin/*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
-    app.locals.adminRandCode = Math.floor(Math.random()*10000000000000000);
-    response.cookie.adminRandCode = app.locals.adminRandCode
+    
+    let randNum = Math.floor(Math.random()*10000000000000000);
+    app.locals.adminRandCode = randNum;
+    response.cookie("adminRandCode",randNum);
+    
     console.log("▬▬",app.locals.adminRandCode,"▬▬");
     response.send("Successfuly connected");
     
-  } else if (app.locals.adminRandCode && request.cookies.adminRandCode) {
-    if (app.locals.adminRandCode && request.cookies.adminRandCode) {
+  } else if (app.locals.adminRandCode && request.cookie) {
+    if (app.locals.adminRandCode == request.cookies.adminRandCode && request.cookies.adminRandCode != undefined) {
       response.render(`pages/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode, eval: request.body}, function(err, html) {
         request.body
       });
