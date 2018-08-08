@@ -10,7 +10,8 @@
     "ejs":"",
     "express":"",
     "multer":"",
-    "body-parser":""
+    "body-parser":"",
+    "cookie-parser":""
   },
   "author": "knose1",
   "license": "MIT"
