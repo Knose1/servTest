@@ -40,11 +40,7 @@ app.all(`/admin/*`,function(request,response,next) {
   } else {
     response.status(403).send({
       error: "Accès refusé",
-      cookies: request.cookies,
-      cookies_string: String(request.cookies),
-      
-      signedCookies: request.signedCookies,
-      signedCookies: String(request.signedCookies)
+      reason: "You must sign in as an admin"
     });
   }
   //next();
