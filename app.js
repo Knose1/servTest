@@ -2,10 +2,13 @@ const express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var cookieParser = require('cookie-parser')
 var upload = multer(); // for parsing multipart/form-data
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
+
+app.use(cookieParser())
 
 app.set('port', (process.env.PORT || 1000));
 
@@ -36,7 +39,14 @@ app.all(`/admin/*`,function(request,response,next) {
     
     
   } else {
-    response.status(403).send({error: "Accès refusé", cookies: request.cookies, cookies_string: String(request.cookies)});
+    response.status(403).send({
+      error: "Accès refusé",
+      cookies: request.cookies,
+      cookies_string: String(request.cookies),
+      
+      signedCookies: request.signedCookies,
+      signedCookies: String(request.signedCookies)
+    });
   }
   //next();
 });
