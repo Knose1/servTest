@@ -11,45 +11,39 @@
             switch (Number(code) ) { 
                 case 404:
             %>
-                <%=
-                    `<div class="content 404">
-                        <div class="content_error 404">
-                            Error: ${error}
-                        </div>
-                        <br>
-                        <div class="content_path 404">
-                            Path : ${path}
-                        </div>
-                    </div>`
-                %>
+                <div class="content 404">
+                    <div class="content_error 404">
+                        <%= Error: ${error} %>
+                    </div>
+                    <br>
+                    <div class="content_path 404">
+                        <%= Path : ${path} %>
+                    </div>
+                </div>
             <%
                     break
                 case 403:
             %>
-                <%=
-                    `<div class="content 403">
-                        <div class="content_error 403">
-                            Error: ${error}
-                        </div>
-                        <br>
-                        <div class="content_reason 403">
-                            Reason : ${reason}
-                        </div>
-                    </div>`
-                %>
+                <div class="content 403">
+                    <div class="content_error 403">
+                        <%= Error: ${error} %>
+                    </div>
+                    <br>
+                    <div class="content_reason 403">
+                        <%= Reason : ${reason} %>
+                    </div>
+                </div>
             <%
                     break
                 default:
             %>
         <% }} catch (e) { %>
-            <%=
-            `<div class="content catch">
+            <div class="content catch">
                 <div class="content_error catch">
                     An error occured in the handeler
                 </div>
-                <error>${e}</error>
-            </div>`
-            %>
+                <error><%= e %></error>
+            </div>
         <% } %>
     </body>
 
