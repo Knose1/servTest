@@ -19,6 +19,21 @@ app.set('view engine','ejs');
   response.render(`pages/login`);
 });*/
 
+app.get(`/css/*.css`,function(request,response,next) {
+    var options = {
+    root: __dirname,
+  };
+
+  var fileName = request.path
+  respond.sendFile(fileName, options, function (err) {
+    if (err) {
+      next(err);
+    } else {
+      console.log('Sent:', fileName);
+    }
+  });
+});
+
 app.all(`/admin/*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
     
