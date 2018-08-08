@@ -23,10 +23,10 @@ app.get(`/css/*.css`,function(request,response,next) {
     var options = {
     root: __dirname,
   };
-
-  var fileName = request.path
+  var fileName = "/views" + request.path
   respond.sendFile(fileName, options, function (err) {
     if (err) {
+      console.log(fileName)
       next(err);
     } else {
       console.log('Sent:', fileName);
