@@ -23,10 +23,12 @@ app.all(`/admin/*`,function(request,response,next) {
     console.log("▬▬",app.locals.adminRandCode,"▬▬");
     response.send("Successfuly connected");
     
-  } else if (app.locals.adminRandCode == request.cookies.adminRandCode){
-    response.render(`pages/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode, eval: request.body}, function(err, html) {
-      request.body
-    });
+  } else if (app.locals.adminRandCode && request.cookies.adminRandCode) {
+    if (app.locals.adminRandCode && request.cookies.adminRandCode) {
+      response.render(`pages/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode, eval: request.body}, function(err, html) {
+        request.body
+      });
+    }
     
     
     
