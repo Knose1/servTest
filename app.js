@@ -19,7 +19,7 @@ app.set('view engine','ejs');
 app.all(`/admin/*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
     
-    let randNum = Math.floor(Math.random()*10000000000000000);
+    let randNum = Math.floor(Math.random()*10000000000000000) + Math.floor(Math.random()*100000000000000);
     app.locals.adminRandCode = randNum;
     response.cookie("adminRandCode",randNum);
     
@@ -36,7 +36,7 @@ app.all(`/admin/*`,function(request,response,next) {
     
     
   } else {
-    response.status(403).send({error: "Accès refusé"});
+    response.status(403).send({error: "Accès refusé", cookies:request.cookies});
   }
   //next();
 });
