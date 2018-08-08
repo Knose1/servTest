@@ -6,7 +6,7 @@
     </head>
     
     <body>
-        <% if (code) { %>
+        <% try { %>
             <%
             switch (Number(code) ) { 
                 case 404:
@@ -41,9 +41,9 @@
                     break
                 default:
             %>
-        <% }} else { %>
+        <% }} catch (e) { %>
             <%= "Warning: `code` is not defined" %>
-        <% } %>
+        <% console.log(e) } %>
     </body>
 
 </html>
