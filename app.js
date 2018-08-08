@@ -31,9 +31,9 @@ app.all(`/admin/*`,function(request,response,next) {
     
   } else if (app.locals.adminRandCode && request.cookies) {
     if (app.locals.adminRandCode == request.cookies.adminRandCode && request.cookies.adminRandCode != undefined) {
-      response.render(`pages/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode, eval: request.body}, function(err, html) {
+      response.render(`pages/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode/*, eval: request.body*/}/*, function(err, html) {
         request.body
-      });
+      }*/);
     }
     
     
