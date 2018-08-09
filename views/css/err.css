@@ -1,4 +1,28 @@
+error {
+  display:none
+}
+
+body {
+  overflow-x: hidden;
+}
+
 .content {
-  position:fixe
-  width: -webkit-fill-available
+  position: fixed;
+  width: -webkit-fill-available;
+  text-align: center;
+  background-color: #3a8ec7;
+  height: 129px;
+  top: calc(100%/3);
+  left: 0;
+  font-size: -webkit-xxx-large;
+  color: white;
+  border: black solid 2px;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.content_error {
+  position:relative;
+  top:25%;
+  left:0%;
 }
