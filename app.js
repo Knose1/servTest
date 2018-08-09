@@ -55,13 +55,13 @@ app.all(`/admin*`,function(request,response,next) {
     
   } else if (app.locals.adminRandCode == request.cookies.adminRandCode && request.cookies.adminRandCode != undefined) {
     
-    try {
-      response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode/*, eval: request.body*/}/*, function(err, html) {
-        request.body
-      }*/);
-    } catch (e) {
-      response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
-    }
+    response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode/*, eval: request.body*/}, function(err, html) {
+      //request.body
+      if (err) {
+        response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
+      }
+    });
+    
     
     
     
