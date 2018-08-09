@@ -54,6 +54,7 @@ app.all(`/admin/*`,function(request,response,next) {
     
   } else {
     response.status(403).render(`error/`,{
+      code:403,
       error: "Accès refusé",
       reason: "You must sign in as an admin"
     });
@@ -62,7 +63,7 @@ app.all(`/admin/*`,function(request,response,next) {
 });
 //404 Handeler
 app.all("*", function(request,response) {
-  response.status(404).render(`error/`,{error: "404 not found", path: request.path});
+  response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
 });
 
 app.listen(app.get('port'), function() {
