@@ -46,7 +46,7 @@ app.all(`/admin*`,function(request,response,next) {
     response.send(`Successfuly connected <script>
       (async function(){
         await new Promise(function(resolve, reject) {
-          setTimeout(resolve, 1000);
+          setTimeout(resolve, 2500);
         });
 
         window.location.replace("https://${request.hostname + request.path}")
@@ -59,6 +59,8 @@ app.all(`/admin*`,function(request,response,next) {
       //request.body
       if (err) {
         response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
+      } else {
+        response.send(html);
       }
     });
     
