@@ -43,7 +43,14 @@ app.all(`/admin*`,function(request,response,next) {
     response.cookie("adminRandCode",randNum);
     
     console.log("▬▬",app.locals.adminRandCode,"▬▬");
-    response.send("Successfuly connected");
+    response.send(`Successfuly connected <script>
+      (async function(){
+        await new Promise(function(resolve, reject) {
+          setTimeout(resolve, 1000);
+        });
+        window.location.reload()
+      })()
+    </script>`);
     
   } else if (app.locals.adminRandCode == request.cookies.adminRandCode && request.cookies.adminRandCode != undefined) {
     
