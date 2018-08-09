@@ -28,10 +28,9 @@ app.get(`/css/*.css`,function(request,response,next) {
     if (err) {
       console.log(fileName)
       console.error(err)
-      next(response.sendStatus(404))
     } else {
       console.log('Sent:', fileName);
-      response.sendStatus(200)
+      response.status(200)
     }
   });
 });
