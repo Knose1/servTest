@@ -56,7 +56,7 @@ app.all(`/admin/*`,function(request,response,next) {
   } else {
     response.status(403).render(`error/`,{
       code:403,
-      error: "Accès refusé",
+      error: "Access denied",
       reason: "You must sign in as an admin"
     });
   }
