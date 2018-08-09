@@ -48,7 +48,8 @@ app.all(`/admin*`,function(request,response,next) {
         await new Promise(function(resolve, reject) {
           setTimeout(resolve, 1000);
         });
-        window.location.reload()
+
+        window.location.replace(${request.hostname + "/" + request.parth})
       })()
     </script>`);
     
