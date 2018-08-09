@@ -31,7 +31,7 @@ app.get(`/css/*.css`,function(request,response,next) {
       next(response.sendStatus(404))
     } else {
       console.log('Sent:', fileName);
-      next(response.sendStatus(200))
+      response.sendStatus(200)
     }
   });
 });
