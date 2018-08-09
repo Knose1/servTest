@@ -49,7 +49,7 @@ app.all(`/admin*`,function(request,response,next) {
           setTimeout(resolve, 1000);
         });
 
-        window.location.replace(${request.hostname + "/" + request.parth})
+        window.location.replace("https://${request.hostname + "/" + request.path}")
       })()
     </script>`);
     
