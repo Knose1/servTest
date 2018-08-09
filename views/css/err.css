@@ -10,7 +10,6 @@ body {
   position: fixed;
   width: -webkit-fill-available;
   text-align: center;
-  background-color: #3a8ec7;
   height: 129px;
   top: calc(100%/3);
   left: 0;
@@ -25,4 +24,8 @@ body {
   position:relative;
   top:25%;
   left:0%;
+}
+
+.catch {
+  background-color: #3a8ec7;
 }
