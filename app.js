@@ -27,9 +27,11 @@ app.get(`/css/*.css`,function(request,response,next) {
   response.sendFile(fileName, options, function (err) {
     if (err) {
       console.log(fileName)
-      next(err);
+      console.error(err)
+      next(response.sendStatus(404))
     } else {
       console.log('Sent:', fileName);
+      next(response.sendStatus(200))
     }
   });
 });
