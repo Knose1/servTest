@@ -36,7 +36,7 @@ app.get(`/css/*.css`,function(request,response,next) {
 });
 
 app.all(`/admin*`,function(request,response,next) {
-  if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) ) {
+  if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) && !Boolean(app.locals.adminRandCode)) {
     
     let randNum = String( Math.floor(Math.random()*10000000000000000) ) + String( Math.floor(Math.random()*10000000000000000) );
     app.locals.adminRandCode = randNum;
