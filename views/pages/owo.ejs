@@ -1,24 +1,32 @@
 <html>
     <head>
         <style>
-            .body {
+            body {
+                overflow: hidden;
                 background-color: black;
             }
+
+            .centalBarre {
+                list-style-type: none;
+                width: -webkit-fill-available;
+                background-color: orange;
+                font-size: -webkit-xxx-large;
+                text-align: center;
+                position: fixed;
+                left: 0;
+                top: 37%;
+            }
+
             .cover_bg {
                 position: absolute;
                 top: 0px;
                 right: 0px;
                 bottom: 0px;
                 left: 0px;
-                max-height: 100%;
-                max-width: 100%;
+                max-height: fit-content;
+                width: 100%;
                 margin: auto;
-                z-index:-1;
-            }
-            .centalBarre {
-                list-style-type:none;
-                width:-webkit-fill-available;
-                background-color:orange;
+                z-index: -1;
             }
         </style>
     </head>
