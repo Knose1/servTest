@@ -6,7 +6,7 @@ exports.execute = () => {
 
     app.set('port', (process.env.PORT || 1000));
     
-    console.log(__dirname + '../views')
-    app.set('views', __dirname + '../views');
+    console.log(__root + '/views')
+    app.set('views', __root + '/views');
     app.set('view engine','ejs');
 }
