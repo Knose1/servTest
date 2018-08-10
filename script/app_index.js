@@ -50,7 +50,7 @@ app.all(`/admin*`,function(request,response,next) {
   //next();
 });
 
-app.get("/owo.mp3",function(request,response) {
+app.get("/owo.mp4",function(request,response) {
   response.render(`pages/owo`, {} , function(err, html) {
       //request.body
       if (err) {
