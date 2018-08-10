@@ -1,9 +1,4 @@
-const express = require('express');
-var app = express();
-var bodyParser = require('body-parser');
-var multer = require('multer');
-var cookieParser = require('cookie-parser')
-var upload = multer(); // for parsing multipart/form-data
+
 
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
