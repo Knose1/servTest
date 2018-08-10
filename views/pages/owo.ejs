@@ -33,7 +33,7 @@
     </head>
     
     <body>
-        <video class="cover_bg" autoplay loop>
+        <video class="cover_bg" loop>
             <source src="https://knose1-games.herokuapp.com/mp4/macron.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -42,6 +42,9 @@
                 <b>BAN KNOSE1</b>
             </li>
         </ul>
+        <script>
+            (async function() {document.querySelector("video").play()})()
+        </script>
     </body>
 
 </html>
