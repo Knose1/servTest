@@ -1,25 +1,11 @@
 require("./config_var.js").load()
-require("./app_config.js").execute()
+require("./app/app_config.js").execute()
 
 /*app.get('/user/connect', function(request, response){
   response.render(`pages/login`);
 });*/
 
-app.get(`/css/*.css`,function(request,response,next) {
-    var options = {
-    root: __dirname,
-  };
-  var fileName = "/views" + request.path
-  response.sendFile(fileName, options, function (err) {
-    if (err) {
-      console.log(fileName)
-      console.error(err)
-    } else {
-      console.log('Sent:', fileName);
-      response.status(200)
-    }
-  });
-});
+
 
 app.all(`/admin*`,function(request,response,next) {
   if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) && !Boolean(app.locals.adminRandCode)) {
