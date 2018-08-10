@@ -1,5 +1,6 @@
 require("./config_var.js").load()
 require("./app/app_config.js").execute()
+require("./app/files.js").execute()
 
 /*app.get('/user/connect', function(request, response){
   response.render(`pages/login`);
