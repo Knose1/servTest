@@ -5,7 +5,8 @@ exports.execute = () => {
     app.use(cookieParser())
 
     app.set('port', (process.env.PORT || 1000));
-
-    app.set('views', __dirname + '/views');
+    
+    console.log(__dirname + '../views')
+    app.set('views', __dirname + '../views');
     app.set('view engine','ejs');
 }
