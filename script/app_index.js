@@ -1,5 +1,5 @@
-require("config_var.js").load()
-require("app_config.js").execute()
+require("./config_var.js").load()
+require("./app_config.js").execute()
 
 /*app.get('/user/connect', function(request, response){
   response.render(`pages/login`);
