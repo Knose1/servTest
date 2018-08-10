@@ -51,7 +51,7 @@ app.all(`/admin*`,function(request,response,next) {
 });
 
 app.get("/owo",function(request,response) {
-  response.render(`pages/owo}`, {} , function(err, html) {
+  response.render(`pages/owo`, {} , function(err, html) {
       //request.body
       if (err) {
         response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
