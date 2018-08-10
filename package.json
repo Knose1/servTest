@@ -2,7 +2,7 @@
   "name": "test",
   "version": "0.0.1",
   "description": "Test a serv",
-  "main": "app.js",
+  "main": "script/app_index.js",
   "scripts": {
      "start":"node app.js"
   },
