@@ -63,7 +63,7 @@ app.get("/owo.mp4",function(request,response) {
 
 //404 Handeler
 app.all("*", function(request,response) {
-  response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
+  response.status(500).render(`error/`);
 });
 
 app.listen(app.get('port'), function() {
