@@ -102,9 +102,9 @@ app.listen(app.get('port'), function() {
         app.locals.adminRandCode${i} = randNum;
         strCodes.push(randNum);
         console.log("▬▬",randNum,"▬▬");
-        UriCodes += \`a${i}=\${randNum}\`;
+        UriCodes += \`a${i}=\${randNum}$\n\`;
       `)
     }
-    console.log("▬▬",UriCodes.slice(0,-1),"▬▬")
+    console.log("▬▬",UriCodes.slice(0,-2),"▬▬")
   app.locals.adminConnected = false
 });
