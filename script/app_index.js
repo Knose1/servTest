@@ -9,13 +9,28 @@ require("./app/files.js").execute()
 
 
 app.all(`/admin*`,function(request,response,next) {
-  if (request.query.admin == encodeURI(process.env.ADMINPASS) && request.query.mail == encodeURI(process.env.ADMINMAIL) && !Boolean(app.locals.adminRandCode)) {
+  var strCodes = [NaN]
+  if (!Boolean(app.locals.adminRandCode1) || !Boolean(app.locals.adminRandCode2) || !Boolean(app.locals.adminRandCode3) || !Boolean(app.locals.adminRandCode4)) {
+    let i = 0;
+    while (i < 4) {
+      i += 1;
+      eval(`
+        let randNum = String( Math.floor(Math.random()*10000000000000000) ) + String( Math.floor(Math.random()*10000000000000000) );
+        app.locals.adminRandCode${i} = randNum;
+        strCodes.push(randNum);
+        console.log("▬▬",randNum,"▬▬");
+      `)
+    }
     
-    let randNum = String( Math.floor(Math.random()*10000000000000000) ) + String( Math.floor(Math.random()*10000000000000000) );
-    app.locals.adminRandCode = randNum;
-    response.cookie("adminRandCode",randNum);
-    
-    console.log("▬▬",app.locals.adminRandCode,"▬▬");
+  }
+  
+  if (request.query.a1 == app.locals.adminRandCode1 && request.query.a2 == app.locals.adminRandCode2 && request.query.a3 == app.locals.adminRandCode3 && request.query.a4 == app.locals.adminRandCode4 && !app.locals.adminConnected) {
+    let i = 0;
+    while (i < 4) {
+      i += 1
+      eval(`response.cookie("adminRandCode${i}",strCodes[${i}])`);
+    }
+    app.locals.adminConnected = true
     response.send(`Successfuly connected <script>
       (async function(){
         await new Promise(function(resolve, reject) {
@@ -69,4 +84,15 @@ app.all("*", function(request,response) {
 
 app.listen(app.get('port'), function() {
   console.log(`App is running on port ${app.get('port')}`)
+  let i = 0;
+    while (i < 4) {
+      i += 1;
+      eval(`
+        let randNum = String( Math.floor(Math.random()*10000000000000000) ) + String( Math.floor(Math.random()*10000000000000000) );
+        app.locals.adminRandCode${i} = randNum;
+        strCodes.push(randNum)
+        console.log(randNum)
+      `)
+    }
+  app.locals.adminConnected = false
 });
