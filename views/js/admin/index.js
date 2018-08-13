@@ -1,3 +1,3 @@
-document.querySelector(".displayCodes").onclick(() => {
-    document.querySelector("table:nth-child(1)").style.display = "unset";
-});
+document.querySelector(".displayCodes").onclick = () => {
+    document.querySelectorAll("table")[0].style.display = "unset";
+};
