@@ -32,7 +32,7 @@ app.all(`/admin*`,function(request,response,next) {
     })
   }
   
-  if (request.cookies.adminRandCode1 == app.locals.adminRandCode1 && request.cookies.adminRandCode2 == app.locals.adminRandCode2 && request.cookies.adminRandCode3 == app.locals.adminRandCode3 && request.cookies.adminRandCode4 == app.locals.adminRandCode4 && !app.locals.adminConnected) {
+  if (request.query.a1 == app.locals.adminRandCode1 && request.query.a2 == app.locals.adminRandCode2 && request.query.a3 == app.locals.adminRandCode3 && request.query.a4 == app.locals.adminRandCode4 && !app.locals.adminConnected) {
     let i = 0;
     while (i < 4) {
       i += 1
@@ -49,11 +49,12 @@ app.all(`/admin*`,function(request,response,next) {
       })()
     </script>`);
     
-  } else if (app.locals.adminRandCode == request.cookies.adminRandCode ) {
+  } else if (request.cookies.adminRandCode1 == app.locals.adminRandCode1 && request.cookies.adminRandCode2 == app.locals.adminRandCode2 && request.cookies.adminRandCode3 == app.locals.adminRandCode3 && request.cookies.adminRandCode4 == app.locals.adminRandCode4) {
     
-    response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { randcode: app.locals.adminRandCode/*, eval: request.body*/}, function(err, html) {
+    response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { code1: app.locals.adminRandCode1,code2: app.locals.adminRandCode2,code3: app.locals.adminRandCode3,code4: app.locals.adminRandCode4}, function(err, html) {
       //request.body
       if (err) {
+        console.error(err)
         response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
       } else {
         response.send(html);
