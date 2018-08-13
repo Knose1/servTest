@@ -93,15 +93,18 @@ app.all("*", function(request,response) {
 app.listen(app.get('port'), function() {
   console.log(`App is running on port ${app.get('port')}`);
   var strCodes = [NaN];
+  var UriCodes = "?";
   let i = 0;
     while (i < 4) {
       i += 1;
       eval(`
         let randNum = String( Math.floor(Math.random()*10000000000000000) ) + String( Math.floor(Math.random()*10000000000000000) );
         app.locals.adminRandCode${i} = randNum;
-        strCodes.push(randNum)
+        strCodes.push(randNum);
         console.log("▬▬",randNum,"▬▬");
+        UriCodes += \`a${i}=\${randNum}\`;
       `)
     }
+    console.log("▬▬",UriCodes.slice(0,-1),"▬▬")
   app.locals.adminConnected = false
 });
