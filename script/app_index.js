@@ -9,8 +9,8 @@ require("./app/files.js").execute()
 
 
 app.all(`/admin*`,function(request,response,next) {
-  var strCodes = [NaN]
   if (!Boolean(app.locals.adminRandCode1) || !Boolean(app.locals.adminRandCode2) || !Boolean(app.locals.adminRandCode3) || !Boolean(app.locals.adminRandCode4)) {
+    var strCodes = [NaN];
     let i = 0;
     while (i < 4) {
       i += 1;
@@ -22,6 +22,14 @@ app.all(`/admin*`,function(request,response,next) {
       `)
     }
     
+  } else {
+    var strCodes = [NaN,app.locals.adminRandCode1,app.locals.adminRandCode2,app.locals.adminRandCode3,app.locals.adminRandCode4]
+  }
+  
+  if (!app.locals.adminConnected) {
+    strCodes.forEach(code => {
+      console.log("▬▬",code,"▬▬");
+    })
   }
   
   if (request.query.a1 == app.locals.adminRandCode1 && request.query.a2 == app.locals.adminRandCode2 && request.query.a3 == app.locals.adminRandCode3 && request.query.a4 == app.locals.adminRandCode4 && !app.locals.adminConnected) {
@@ -83,7 +91,8 @@ app.all("*", function(request,response) {
 });
 
 app.listen(app.get('port'), function() {
-  console.log(`App is running on port ${app.get('port')}`)
+  console.log(`App is running on port ${app.get('port')}`);
+  var strCodes = [NaN];
   let i = 0;
     while (i < 4) {
       i += 1;
@@ -91,7 +100,7 @@ app.listen(app.get('port'), function() {
         let randNum = String( Math.floor(Math.random()*10000000000000000) ) + String( Math.floor(Math.random()*10000000000000000) );
         app.locals.adminRandCode${i} = randNum;
         strCodes.push(randNum)
-        console.log(randNum)
+        console.log("▬▬",randNum,"▬▬");
       `)
     }
   app.locals.adminConnected = false
