@@ -1,4 +1,4 @@
-exports.execute = () {
+exports.execute = () => {
   app.use(function (req, res, next) {
     console.log('middleware');
     req.testing = 'testing';
