@@ -5,12 +5,12 @@ exports.execute = () => {
     return next();
   });
 
-  app.get('/testsocket', function(req, res, next){
+  app.get('/', function(req, res, next){
     console.log('get route', req.testing);
     res.end();
   });
 
-  app.ws('/testsocket', function(ws, req) {
+  app.ws('/', function(ws, req) {
     ws.on('message', function(msg) {
       console.log(msg);
     });
