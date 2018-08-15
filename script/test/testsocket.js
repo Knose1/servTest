@@ -14,6 +14,7 @@ exports.execute = () => {
     ws.on('message', function(msg) {
       console.log(msg);
     });
+    ws.emit('message', "test")
     console.log('socket', req.testing);
   });
 
