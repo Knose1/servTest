@@ -1,4 +1,5 @@
 exports.execute = () => {
+    
     app.use(bodyParser.json()); // for parsing application/json
     app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
@@ -9,4 +10,6 @@ exports.execute = () => {
     console.log(__root + '/views')
     app.set('views', __root + '/views');
     app.set('view engine','ejs');
+    
+    return expressWs = require('express-ws')(app);
 }
