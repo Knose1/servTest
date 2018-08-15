@@ -11,7 +11,8 @@
     "express":"",
     "multer":"",
     "body-parser":"",
-    "cookie-parser":""
+    "cookie-parser":"",
+    "express-ws":""
   },
   "author": "knose1",
   "license": "MIT"
