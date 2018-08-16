@@ -19,3 +19,8 @@ exports.execute = () => {
   });
 
 }
+try {
+  console.log(expressWs.getWss().clients)
+} catch (e) {
+  console.error(e)
+} 
