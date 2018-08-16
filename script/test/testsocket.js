@@ -5,12 +5,13 @@ exports.execute = () => {
     return next();
   });
 
-  app.get('/*', function(req, res, next){
+  app.get('/', function(req, res, next){
+    console.log(expressWs.getWss().clients)
     console.log('get route', req.testing);
     res.end();
   });
 
-  app.ws('/*', function(ws, req) {
+  app.ws('/', function(ws, req) {
     console.log(ws.getWss().clients)
     ws.on('message', function(msg) {
       console.log(msg);
@@ -18,9 +19,4 @@ exports.execute = () => {
     console.log('socket', req.testing);
   });
 
-}
-try {
-  console.log(expressWs.getWss().clients)
-} catch (e) {
-  console.error(e)
 } 
