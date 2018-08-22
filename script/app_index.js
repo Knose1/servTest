@@ -75,17 +75,6 @@ app.all(`/admin*`,function(request,response,next) {
   //next();
 });
 
-app.get("/owo.mp4",function(request,response) {
-  response.render(`pages/owo`, {} , function(err, html) {
-      //request.body
-      if (err) {
-        response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
-      } else {
-        response.send(html);
-      }
-    });
-});
-
 //404 Handeler
 app.all("*", function(request,response) {
   response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
