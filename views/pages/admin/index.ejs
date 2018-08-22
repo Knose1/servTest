@@ -55,6 +55,42 @@
         </td>
       </tr>
     </table>
+    <% try { %>
+      <% if (stropole.length != 0) { %>
+        <table>
+          <%=
+            stropole.map(m => `
+              <tr>
+                <td>
+                  ${m.user}
+                </td>
+                <td>
+                  ${m.content}
+                </td>
+                <td>
+                  <button onclick="stropoleDelete()">${m.id}</button>
+                </td>
+              </tr>
+            `).join("\n")
+          %>
+        </table>
+      <% } else { %>
+        <div>There is no votes in the stropole atm</div>
+      <% } %>
+    <% } catch(e) { %>
+      <% if (!window.location.search) { %>
+        <button onclick="openStropole()">New Stropole</button>
+        <script>
+          function openStropole() {
+            windows.location.replace("?openStropole=true")
+          }
+        </script>
+      <% 
+        } else {
+          console.log(e) 
+        } 
+      %>
+    <% } %>
   </body>
   <script src="https://knose1-games.herokuapp.com/js/admin/index.js"></script>
 </html>
