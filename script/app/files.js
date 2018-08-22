@@ -40,7 +40,7 @@ exports.execute = () => {
         var options = {
             root: __root,
         };
-        var fileName = "/files" + request.path
+        var fileName = "/views" + request.path
         response.sendFile(fileName, options, function (err) {
             if (err) {
                 console.log(fileName)
