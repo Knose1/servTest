@@ -78,18 +78,12 @@
         <div>There is no votes in the stropole atm</div>
       <% } %>
     <% } catch(e) { %>
-      <% if (!location.search) %>
-        <button onclick="openStropole()">New Stropole</button>
-        <script>
-          function openStropole() {
-            windows.location.replace("?openStropole=true")
-          }
-        </script>
-      <% 
-        } else {
-          console.log(e) 
-        } 
-      %>
+      <button onclick="openStropole()">New Stropole</button>
+      <script>
+        function openStropole() {
+          windows.location.replace("?openStropole=true")
+        }
+      </script>
     <% } %>
   </body>
   <script src="https://knose1-games.herokuapp.com/js/admin/index.js"></script>
