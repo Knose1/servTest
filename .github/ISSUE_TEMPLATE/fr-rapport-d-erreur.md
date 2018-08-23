@@ -22,10 +22,12 @@ Si possible, ajoutez des captures d'écran pour aider à expliquer votre problè
 
 **Ordinateur (remplissez les informations suivantes):**  
  - OS: [e.g. iOS]
+ - Navigateur: [e.g. Chrome]
 
 **Smartphone (remplissez les informations suivantes):**  
  - Appareil: [e.g. iPhone6]
  - OS: [e.g. iOS8.1]
+ - Navigateur: [e.g. Chrome]
 
 **Informations supplémentaires**  
 Ajoutez ici toute autre information concernant le problème.
