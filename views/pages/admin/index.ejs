@@ -78,7 +78,7 @@
         <div>There is no votes in the stropole atm</div>
       <% } %>
     <% } catch(e) { %>
-      <% if (!window.location.search) { %>
+      <% if (!location.search) %>
         <button onclick="openStropole()">New Stropole</button>
         <script>
           function openStropole() {
