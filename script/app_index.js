@@ -52,15 +52,31 @@ app.all(`/admin*`,function(request,response,next) {
     
   } else if (request.cookies.adminRandCode1 == app.locals.adminRandCode1 && request.cookies.adminRandCode2 == app.locals.adminRandCode2 && request.cookies.adminRandCode3 == app.locals.adminRandCode3 && request.cookies.adminRandCode4 == app.locals.adminRandCode4) {
     
-    response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { code1: app.locals.adminRandCode1,code2: app.locals.adminRandCode2,code3: app.locals.adminRandCode3,code4: app.locals.adminRandCode4}, function(err, html) {
-      //request.body
-      if (err) {
-        console.error(err)
-        response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
-      } else {
-        response.send(html);
-      }
-    });
+    //Si on est sur le /admin mais que le stropole n'est pas lancé ou que l'on est pas sur /admin
+    if (!( (request.query.openStropole == "true" || app.locals.stropole) && request.originalUrl == "/admin" )) {
+      response.render(`pages/admin/${request.path.slice("pages/admin/".length)}`, { code1: app.locals.adminRandCode1,code2: app.locals.adminRandCode2,code3: app.locals.adminRandCode3,code4: app.locals.adminRandCode4}, function(err, html) {
+        //request.body
+        if (err) {
+          console.error(err)
+          response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
+        } else {
+          response.send(html);
+        }
+      });
+    } else if ( (request.query.openStropole == "true" || app.locals.stropole) && request.originalUrl == "/admin" ) {
+      if (!app.locals.stropole)
+        app.locals.stropole = [];
+      
+      response.render(`pages/admin`, { code1: app.locals.adminRandCode1,code2: app.locals.adminRandCode2,code3: app.locals.adminRandCode3,code4: app.locals.adminRandCode4, stropole: app.locals.stropole}, function(err, html) {
+        //request.body
+        if (err) {
+          console.error(err)
+          response.status(404).render(`error/`,{code:404, error: "404 not found", path: request.path});
+        } else {
+          response.send(html);
+        }
+      });
+    }
     
     
     
