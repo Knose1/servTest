@@ -1,0 +1,96 @@
+<!Doctype HTML>
+
+<html>
+  <head>
+    <style>
+      table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #dddddd;
+      }
+      
+    </style>
+  </head>
+  
+  <body>
+    <button class="displayCodes">Display Codes</button>
+    <table style="display:none">
+      <tr>
+        <th>
+          Code 1
+        </th>
+        <th>
+          Code 2
+        </th>
+        <th>
+          Code 3
+        </th>
+        <th>
+          Code 4
+        </th>
+      </tr>
+      
+      <tr>
+        <td>
+          <%= code1 %>
+        </td>
+        <td>
+          <%= code2 %>
+        </td>
+        <td>
+          <%= code3 %>
+        </td>
+        <td>
+          <%= code4 %>
+        </td>
+      </tr>
+    </table>
+    <% try { %>
+      <% if (stropole.length != 0) { %>
+        <table>
+          <%=
+            stropole.map(m => `
+              <tr>
+                <td>
+                  ${m.user}
+                </td>
+                <td>
+                  ${m.content}
+                </td>
+                <td>
+                  <button onclick="stropoleDelete()">${m.id}</button>
+                </td>
+              </tr>
+            `).join("\n")
+          %>
+        </table>
+      <% } else { %>
+        <div>There is no votes in the stropole atm</div>
+      <% } %>
+    <% } catch(e) { %>
+      <% if (!window.location.search) { %>
+        <button onclick="openStropole()">New Stropole</button>
+        <script>
+          function openStropole() {
+            windows.location.replace("?openStropole=true")
+          }
+        </script>
+      <% 
+        } else {
+          console.log(e) 
+        } 
+      %>
+    <% } %>
+  </body>
+  <script src="https://knose1-games.herokuapp.com/js/admin/index.js"></script>
+</html>

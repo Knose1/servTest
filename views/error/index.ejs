@@ -1,0 +1,50 @@
+<!Doctype HTML>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="https://knose1-games.herokuapp.com/css/err.css">
+    </head>
+    
+    <body>
+        <% try { %>
+            <%
+            switch (Number(code) ) { 
+                case 404:
+            %>
+                <div class="content e404">
+                    <div class="content_error e404">
+                        Error: <%= error %>
+                    </div>
+                    <br>
+                    <div class="content_path e404">
+                        Path : <%= path %>
+                    </div>
+                </div>
+            <%
+                    break
+                case 403:
+            %>
+                <div class="content e403">
+                    <div class="content_error e403">
+                        Error: <%= error %>
+                    </div>
+                    <br>
+                    <div class="content_reason e403">
+                        Reason : <%= reason %>
+                    </div>
+                </div>
+            <%
+                    break
+                default:
+            %>
+        <% }} catch (e) { %>
+            <div class="content catch">
+                <div class="content_error catch">
+                    An error occured
+                </div>
+                <error><%= e %></error>
+            </div>
+        <% } %>
+    </body>
+
+</html>

@@ -2,13 +2,17 @@
   "name": "test",
   "version": "0.0.1",
   "description": "Test a serv",
-  "main": "app.js",
+  "main": "script/app_index.js",
   "scripts": {
      "start":"node app.js"
   },
   "dependencies": {
     "ejs":"",
-    "express":""
+    "express":"",
+    "multer":"",
+    "body-parser":"",
+    "cookie-parser":"",
+    "express-ws":""
   },
   "author": "knose1",
   "license": "MIT"
